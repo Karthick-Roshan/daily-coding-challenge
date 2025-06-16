@@ -1,3 +1,5 @@
+# Kadane Algorithm
+
 def kadane(arr: list[int]) -> int:
     summ = 0
     maxx = float('-inf')
