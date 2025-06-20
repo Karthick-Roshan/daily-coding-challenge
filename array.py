@@ -43,3 +43,18 @@ def floodFill(image: list[list[int]], sr: int, sc: int, color: int) -> list[list
     return image
 
 print(floodFill([[1,1,1],[1,1,0],[1,0,1]], 1, 1, 2))
+
+
+# Best Time to Buy and Sell Stock
+
+def maxProfit(prices: list[int]) -> int:
+    mins = prices[0]
+    res = 0
+
+    for i in prices:
+        mins = min(i, mins)
+        res = max(res, i - mins)
+
+    return res 
+
+print(maxProfit([7, 10, 1, 3, 6, 9, 2]))
