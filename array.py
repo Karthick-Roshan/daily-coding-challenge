@@ -58,3 +58,21 @@ def maxProfit(prices: list[int]) -> int:
     return res 
 
 print(maxProfit([7, 10, 1, 3, 6, 9, 2]))
+
+
+# Next larger Element
+
+def nextLargerElement(arr: list[int]) -> list[int]:
+    n = len(arr)
+    result = [-1] * n
+    stack = []
+
+    for i in range(n):
+        while stack and arr[i] > arr[stack[-1]]:
+            idx = stack.pop()
+            result[idx] = arr[i]
+        stack.append(i)
+
+    return result
+
+print(nextLargerElement([1,3,2,4]))
