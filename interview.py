@@ -1,3 +1,4 @@
+# Question: 01
 #  You’re given an array A of n integers and q queries.
 #  Each query can be one of the following two types:
 #  • Type 1 Query: (1, l, r) - Replace A[i] with 
@@ -31,4 +32,34 @@ sample_input = [
     ]
 ]
 
-print(calculate(*sample_input))
+# print(calculate(*sample_input))
+
+
+# Question: 02
+# Given a number x and an array of integers arr, 
+# find the smallest subarray with sum greater than the given value. 
+# If such a subarray do not exist return 0 in that case.
+
+# Examples:
+
+# Input: x = 51, arr[] = [1, 4, 45, 6, 0, 19]
+# Output: 3
+# Explanation: Minimum length subarray is [4, 45, 6]
+
+def smallestSubWithSum(x: int, arr: list[int]) -> int:
+    n = len(arr)
+    mini = n + 1
+    l = 0
+    curr = 0
+    
+    for r in range(n):
+        curr += arr[r]
+        
+        while curr > x:
+            mini = min(mini, r - l + 1)
+            curr -= arr[l]
+            l += 1
+            
+    return 0 if mini == n + 1 else mini
+
+# print(smallestSubWithSum(51, [1, 4, 45, 6, 0, 19]))
