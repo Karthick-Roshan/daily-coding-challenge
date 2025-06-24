@@ -76,3 +76,24 @@ def nextLargerElement(arr: list[int]) -> list[int]:
     return result
 
 print(nextLargerElement([1,3,2,4]))
+
+
+# Sort012
+
+def sort012(arr: list[int]):
+    li = [0] * 3
+    n = len(arr)
+    
+    for i in range(n):
+        li[arr[i]] += 1
+
+    id, val = 0, 0
+    for i in li:
+        for _ in range(i):
+            arr[id] = val
+            id += 1
+        val += 1
+
+    return arr
+
+print(sort012([0,1,2,0,1,2]))
