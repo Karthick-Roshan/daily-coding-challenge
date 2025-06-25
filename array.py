@@ -97,3 +97,35 @@ def sort012(arr: list[int]):
     return arr
 
 print(sort012([0,1,2,0,1,2]))
+
+# Given an array of integers arr[] that is first strictly increasing and then maybe strictly decreasing, 
+# find the bitonic point, that is the maximum element in the array.
+# Bitonic Point is a point before which elements are strictly increasing and 
+# after which elements are strictly decreasing.
+
+# Examples:
+# Input: arr[] = [1, 2, 4, 5, 7, 8, 3]
+# Output: 8
+
+def findMaximum(arr: list[int]) -> int:
+    n = len(arr)
+    
+    l, r = 0, n - 1
+    
+    while l <= r:
+        mid = l + (r - l) // 2
+        
+        if mid > 0 and mid < n - 1:
+            if arr[mid] > arr[mid - 1] and arr[mid] > arr[mid + 1]:
+                return arr[mid]
+            elif arr[mid] > arr[mid - 1] and arr[mid] < arr[mid + 1]:
+                l = mid + 1
+            else:
+                r = mid - 1
+                
+        elif mid == 0:
+                return arr[0] if arr[0] > arr[1] else arr[1]
+        elif mid == n - 1:
+                return arr[-1] if arr[-1] > arr[-2] else arr[-2]
+        
+print(findMaximum([1, 2, 4, 5, 7, 8, 3]))
