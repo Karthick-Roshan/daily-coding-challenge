@@ -63,3 +63,55 @@ def smallestSubWithSum(x: int, arr: list[int]) -> int:
     return 0 if mini == n + 1 else mini
 
 # print(smallestSubWithSum(51, [1, 4, 45, 6, 0, 19]))
+
+
+
+# 2. EASY
+#  You are given an array A of length N and an 
+# integer k.
+#  It is given that a subarray from l to r is considered 
+# good, if the number of distinct elements in that 
+# subarray doesn’t exceed k. Additionally, an empty 
+# subarray is also a good subarray and its sum is 
+# considered to be zero.
+#  Find the maximum sum of a good subarray.
+#  Sample Output Description 1
+# 
+#  Here, N = 11, k = 2
+#  A = [1, 2, 2, 3, 2, 3, 5, 1, 2, 1, 1]
+#  We can select the subarray = [2, 2, 3, 2, 3]
+#  It is a good subarray because it contains at most k 
+# distinct elements.
+#  Its sum = 2+2+3+2+3 = 12
+#  So, our answer is 12.
+
+def max_sum(N: int, k: int, arr: list[int]) -> int:
+    from collections import defaultdict
+
+    freq = defaultdict(int)
+    curr_sum = 0
+    max_sum = 0
+    left = 0
+
+    for right in range(N):
+        freq[arr[right]] += 1
+        curr_sum += arr[right]
+
+        while len(freq) > k:
+            freq[arr[left]] -= 1
+            curr_sum -= arr[left]
+            if freq[arr[left]] == 0:
+                del freq[arr[left]]
+            left += 1
+
+        if curr_sum < 0:
+            freq.clear()
+            curr_sum = 0
+            left = right + 1  
+
+        max_sum = max(max_sum, curr_sum)
+
+    return max_sum
+
+# print(max_sum(11, 2, [1, 2, 2, 3, 2, 3, 5, 1, 2, 1, 1]))
+print(max_sum(5, 5, [-1, 1, 3, 2, -1]))
