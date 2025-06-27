@@ -129,3 +129,26 @@ def findMaximum(arr: list[int]) -> int:
                 return arr[-1] if arr[-1] > arr[-2] else arr[-2]
         
 print(findMaximum([1, 2, 4, 5, 7, 8, 3]))
+
+# Count Triplet
+
+def countTriplets(n: int, sum: int, arr: list[int]) -> list:
+    arr.sort()
+    count = 0
+
+    for i in range(n - 2):
+        left = i + 1
+        right = n - 1
+
+        while left < right:
+            current_sum = arr[i] + arr[left] + arr[right]
+
+            if current_sum < sum:
+                count += (right - left)
+                left += 1
+            else:
+                right -= 1
+
+    return count
+
+print(countTriplets(n = 5, sum = 12, arr = [5, 1, 3, 4, 7]))

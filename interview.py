@@ -114,4 +114,4 @@ def max_sum(N: int, k: int, arr: list[int]) -> int:
     return max_sum
 
 # print(max_sum(11, 2, [1, 2, 2, 3, 2, 3, 5, 1, 2, 1, 1]))
-print(max_sum(5, 5, [-1, 1, 3, 2, -1]))
+# print(max_sum(5, 5, [-1, 1, 3, 2, -1]))
