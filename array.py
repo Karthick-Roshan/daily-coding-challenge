@@ -151,4 +151,38 @@ def countTriplets(n: int, sum: int, arr: list[int]) -> list:
 
     return count
 
-print(countTriplets(n = 5, sum = 12, arr = [5, 1, 3, 4, 7]))
+# print(countTriplets(n = 5, sum = 12, arr = [5, 1, 3, 4, 7]))
+
+
+
+# Majority Element II
+# Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+
+def majorityElement(nums: list[int]) -> list:
+    if not nums:
+        return []
+
+    c1, c2 = None, None
+    count1, count2 = 0, 0
+
+    for num in nums:
+        if num == c1:
+            count1 += 1
+        elif num == c2:
+            count2 += 1
+        elif count1 == 0:
+            c1, count1 = num, 1
+        elif count2 == 0:
+            c2, count2 = num, 1
+        else:
+            count1 -= 1
+            count2 -= 1
+
+    result = []
+    for candidate in (c1, c2):
+        if nums.count(candidate) > len(nums) // 3:
+            result.append(candidate)
+
+    return result
+
+print(majorityElement([3,2,3]))
