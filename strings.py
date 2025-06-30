@@ -23,14 +23,12 @@ def isIsomorphic(s: str, t: str) -> bool:
     map_t_s = {}
 
     for ch_s, ch_t in zip(s, t):
-        # Check mapping from s to t
         if ch_s in map_s_t:
             if map_s_t[ch_s] != ch_t:
                 return False
         else:
             map_s_t[ch_s] = ch_t
 
-        # Check reverse mapping from t to s
         if ch_t in map_t_s:
             if map_t_s[ch_t] != ch_s:
                 return False
