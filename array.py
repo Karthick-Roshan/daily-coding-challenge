@@ -185,4 +185,36 @@ def majorityElement(nums: list[int]) -> list:
 
     return result
 
-print(majorityElement([3,2,3]))
+# print(majorityElement([3,2,3]))
+
+
+# Leetcode 1652: Defuse the bomb
+
+def decrypt(code: list[int], k: int) -> list[int]:
+    n = len(code)
+    if k == 0:
+        return [0] * n
+    
+    result = [0] * n
+    code = code * 2  
+
+    window_sum = 0
+    if k > 0:
+        for i in range(1, k + 1):
+            window_sum += code[i]
+        for i in range(n):
+            result[i] = window_sum
+            window_sum -= code[i + 1]
+            window_sum += code[i + k + 1]
+    else:
+        k = -k
+        for i in range(n - k, n):
+            window_sum += code[i]
+        for i in range(n):
+            result[i] = window_sum
+            window_sum -= code[i + n - k]
+            window_sum += code[i + n]
+
+    return result
+
+print(decrypt([5,7,1,4], 3))
