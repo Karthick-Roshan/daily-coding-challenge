@@ -218,3 +218,28 @@ def decrypt(code: list[int], k: int) -> list[int]:
     return result
 
 print(decrypt([5,7,1,4], 3))
+
+
+
+# Given an array arr of distinct elements, the task is to rearrange the elements of the array 
+# in a zig-zag fashion so that the converted array should be in the below form: 
+
+# arr[0] < arr[1]  > arr[2] < arr[3] > arr[4] < . . . . arr[n-2] < arr[n-1] > arr[n]. 
+
+def zigZag(arr: list[int]) -> list[int]:
+    n = len(arr)
+    
+    zig = 1
+    for i in range(n-1):
+        if zig:
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+            zig = 0
+        else:
+            if arr[i] < arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+            zig = 1
+
+    return arr
+
+print(zigZag([4, 3, 7, 8, 6, 2, 1]))
