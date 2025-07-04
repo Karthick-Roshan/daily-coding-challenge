@@ -243,3 +243,21 @@ def zigZag(arr: list[int]) -> list[int]:
     return arr
 
 print(zigZag([4, 3, 7, 8, 6, 2, 1]))
+
+
+def secondLargest(arr: list[int]) -> int:
+    n = len(arr)
+    l, sl = 0 , 0
+
+    l = arr[0]
+    for i in range(1, n):
+        if arr[i] > sl and arr[i] > l:
+            sl = l
+            l = arr[i]
+            
+        if arr[i] > sl and arr[i] < l:
+            sl = arr[i]
+
+    return sl if sl != 0 else -1
+
+print(secondLargest([10, 10, 10]))
