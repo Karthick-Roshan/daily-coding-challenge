@@ -261,3 +261,24 @@ def secondLargest(arr: list[int]) -> int:
     return sl if sl != 0 else -1
 
 print(secondLargest([10, 10, 10]))
+
+
+# Indexes of Subarray Sum
+def subarraySum(arr, target):
+    n = len(arr)
+    ssum = 0
+    l = 0
+
+    for r in range(n):
+        ssum += arr[r]
+
+        while ssum > target and l <= r:
+            ssum -= arr[l]
+            l += 1
+
+        if ssum == target:
+            return [l + 1, r + 1]
+
+    return [-1]
+
+print(subarraySum([1, 2, 3, 7, 5], 12))
