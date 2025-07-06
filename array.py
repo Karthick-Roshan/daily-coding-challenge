@@ -281,4 +281,23 @@ def subarraySum(arr, target):
 
     return [-1]
 
-print(subarraySum([1, 2, 3, 7, 5], 12))
+# print(subarraySum([1, 2, 3, 7, 5], 12))
+
+
+# K largest Element
+import heapq
+
+def k_largest_elements(arr, k):
+    if k == 0:
+        return []
+
+    min_heap = arr[:k]
+    heapq.heapify(min_heap)  
+
+    for num in arr[k:]:
+        if num > min_heap[0]:
+            heapq.heappushpop(min_heap, num)  
+
+    return sorted(min_heap, reverse=True)  
+
+# print(k_largest_elements([3, 1, 5, 12, 2, 11], 3))
