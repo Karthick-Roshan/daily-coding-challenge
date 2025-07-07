@@ -301,3 +301,19 @@ def k_largest_elements(arr, k):
     return sorted(min_heap, reverse=True)  
 
 # print(k_largest_elements([3, 1, 5, 12, 2, 11], 3))
+
+
+# Push Zeros to End
+def pushZerosToEnd(self,arr):
+    n = len(arr)
+    
+    count = 0
+    for i in range(n):
+        if arr[i] != 0:
+            arr[i], arr[count] = arr[count], arr[i]
+            
+            count += 1
+
+    return arr
+
+# print(pushZerosToEnd([1, 2, 0, 4, 3, 0, 5, 0]))
