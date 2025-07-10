@@ -75,4 +75,27 @@ def myAtoi(s: str) -> int:
         
     return sign * res
 
-print(myAtoi("42"))
+# print(myAtoi("42"))
+
+
+# Given two non-empty strings s1 and s2, consisting only of lowercase English letters, 
+# determine whether they are anagrams of each other or not. 
+# Two strings are considered anagrams if they contain the same characters 
+# with exactly the same frequencies, regardless of their order.
+
+def areAnagrams(s1, s2):
+    freq = [0] * 26
+    
+    for i in s1:
+        freq[ord(i) - ord('a')] += 1
+        
+    for i in s2:
+        freq[ord(i) - ord('a')] -= 1 
+        
+    for c in freq:
+        if c != 0:
+            return False
+        
+    return True
+
+# print(areAnagrams("anagram", "nagaram"))
