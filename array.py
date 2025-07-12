@@ -343,3 +343,21 @@ def nextPermutation(arr: list[int]) -> list[int]:
     return arr
 
 # print(nextPermutation([2, 4, 1, 7, 5, 0]))
+
+
+# Smallest positive missing element
+def missingNumber(arr):
+    n = len(arr)
+
+    for i in range(n):
+        while 1 <= arr[i] <= n and arr[arr[i] - 1] != arr[i]:
+            crt_idx = arr[i] - 1
+            arr[i], arr[crt_idx] = arr[crt_idx], arr[i]
+
+    for i in range(n):
+        if arr[i] != i + 1:
+            return i + 1
+
+    return n + 1
+
+# print(missingNumber([2, -3, 4, 1, 1, 7]))   
