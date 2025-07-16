@@ -388,3 +388,19 @@ def search(arr, key):
     return -1
 
 # print(search([4,5,6,7,0,1,2], 0))
+
+
+# Given an amount, 
+# find the minimum number of notes of different denominations 
+# that sum up to the given amount. 
+
+def minNotes(amount):
+    notes = [2000, 500, 200, 100, 20, 10, 5, 2, 1]
+    noteCount = {}
+    for note in notes:
+        if amount >= note:
+            noteCount[note] = amount // note
+            amount %= note
+    return noteCount
+
+# print(minNotes(868))
