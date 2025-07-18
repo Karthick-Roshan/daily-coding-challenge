@@ -404,3 +404,16 @@ def minNotes(amount):
     return noteCount
 
 # print(minNotes(868))
+
+
+# Max Subarray 
+def maxSubArray(nums):
+    max_curr = max_g = nums[0]
+
+    for i in range(1, len(nums)):
+        max_curr = max(nums[i], max_curr + nums[i])
+        max_g = max(max_g, max_curr)
+
+    return max_g
+
+# print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
