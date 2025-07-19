@@ -417,3 +417,25 @@ def maxSubArray(nums):
     return max_g
 
 # print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
+
+
+# Inversion Count
+def inversionCount(arr: list[int]) -> int:
+    def sort(arr):
+        if len(arr) < 2: return arr, 0
+        mid = len(arr) // 2
+        left, invL = sort(arr[:mid])
+        right, invR = sort(arr[mid:])
+        merged, inv = [], invL + invR
+        i = j = 0
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                merged.append(left[i]); i += 1
+            else:
+                merged.append(right[j]); j += 1
+                inv += len(left) - i
+        merged += left[i:] + right[j:]
+        return merged, inv
+    return sort(arr)[1]
+
+# print(inversionCount([2, 4, 1, 3, 5]))
