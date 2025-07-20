@@ -138,3 +138,27 @@ def lengthOfLongestSubstring(s):
     return max_len
 
 # print(lengthOfLongestSubstring("abcabcbb"))
+
+
+# Multiply Strings
+
+def multiplyStrings(s1, s2):
+    sign = '-' if (s1[0] == '-') ^ (s2[0] == '-') else ''
+    s1, s2 = s1.lstrip('-0'), s2.lstrip('-0')
+    
+    if not s1 or not s2: 
+        return "0"
+
+    res = [0] * (len(s1) + len(s2))
+    for i in range(len(s1)-1, -1, -1):
+        for j in range(len(s2)-1, -1, -1):
+            mul = (ord(s1[i]) - 48) * (ord(s2[j]) - 48)
+            pos = i + j + 1
+            res[pos] += mul
+            res[pos-1] += res[pos] // 10
+            res[pos] %= 10
+
+    result = ''.join(map(str, res)).lstrip('0')
+    return sign + (result if result else '0')
+
+# print(multiplyStrings("123", "456"))
