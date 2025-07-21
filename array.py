@@ -439,3 +439,26 @@ def inversionCount(arr: list[int]) -> int:
     return sort(arr)[1]
 
 # print(inversionCount([2, 4, 1, 3, 5]))
+
+# Triplet sum in an array
+def find3Numbers(arr, target):
+    arr.sort()
+    n = len(arr)
+    
+    for i in range(n - 2):
+        left = i + 1
+        right = n - 1
+        
+        while left < right:
+            current_sum = arr[i] + arr[left] + arr[right]
+            
+            if current_sum == target:
+                return True
+            elif current_sum < target:
+                left += 1
+            else:
+                right -= 1
+                
+    return False
+
+# print(find3Numbers([1, 4, 45, 6, 10, 8], 22))
