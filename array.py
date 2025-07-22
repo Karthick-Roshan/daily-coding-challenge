@@ -462,3 +462,21 @@ def find3Numbers(arr, target):
     return False
 
 # print(find3Numbers([1, 4, 45, 6, 10, 8], 22))
+
+#longest Consecutive Number
+def longestConsecutive(arr):
+    arr = sorted(set(arr))
+    n = len(arr)
+    
+    maxlen = currlen = 1
+    
+    for i in range(1, n):
+        if arr[i] == arr[i - 1] + 1:
+            currlen += 1
+            maxlen = max(maxlen, currlen)
+        else:
+            currlen = 1
+            
+    return maxlen
+
+print(longestConsecutive([100, 4, 200, 1, 3, 2]))
