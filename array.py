@@ -479,4 +479,26 @@ def longestConsecutive(arr):
             
     return maxlen
 
-print(longestConsecutive([100, 4, 200, 1, 3, 2]))
+# print(longestConsecutive([100, 4, 200, 1, 3, 2]))
+
+
+def pairs(arr: list[int], k: int) -> list[int]:
+    n = len(arr)
+
+    l, r = 0, n - 1
+
+    while arr[r] >= k:
+        r -= 1
+    print(arr[r])
+    li = []
+    while l < r:
+        total = arr[l] + arr[r]
+        if total > k:
+            r -= 1
+        else:
+            for i in range(l+1, r+1):
+                li.append((l, i))
+            l += 1
+    return li
+
+# print(pairs([3,4,7,11,15,19], 15))
