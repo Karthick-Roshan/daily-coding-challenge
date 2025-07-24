@@ -15,7 +15,7 @@ def kadane(arr: list[int]) -> int:
 
     return maxx
 
-print(kadane([-2,-3,4,-1,-2,1,5,-3]))
+# print(kadane([-2,-3,4,-1,-2,1,5,-3]))
 
 
 # Flood Fill
@@ -42,7 +42,7 @@ def floodFill(image: list[list[int]], sr: int, sc: int, color: int) -> list[list
     dfs(sr, sc)
     return image
 
-print(floodFill([[1,1,1],[1,1,0],[1,0,1]], 1, 1, 2))
+# print(floodFill([[1,1,1],[1,1,0],[1,0,1]], 1, 1, 2))
 
 
 # Best Time to Buy and Sell Stock
@@ -57,7 +57,7 @@ def maxProfit(prices: list[int]) -> int:
 
     return res 
 
-print(maxProfit([7, 10, 1, 3, 6, 9, 2]))
+# print(maxProfit([7, 10, 1, 3, 6, 9, 2]))
 
 
 # Next larger Element
@@ -75,7 +75,7 @@ def nextLargerElement(arr: list[int]) -> list[int]:
 
     return result
 
-print(nextLargerElement([1,3,2,4]))
+# print(nextLargerElement([1,3,2,4]))
 
 
 # Sort012
@@ -96,7 +96,7 @@ def sort012(arr: list[int]):
 
     return arr
 
-print(sort012([0,1,2,0,1,2]))
+# print(sort012([0,1,2,0,1,2]))
 
 # Given an array of integers arr[] that is first strictly increasing and then maybe strictly decreasing, 
 # find the bitonic point, that is the maximum element in the array.
@@ -128,7 +128,7 @@ def findMaximum(arr: list[int]) -> int:
         elif mid == n - 1:
                 return arr[-1] if arr[-1] > arr[-2] else arr[-2]
         
-print(findMaximum([1, 2, 4, 5, 7, 8, 3]))
+# print(findMaximum([1, 2, 4, 5, 7, 8, 3]))
 
 # Count Triplet
 
@@ -217,8 +217,7 @@ def decrypt(code: list[int], k: int) -> list[int]:
 
     return result
 
-print(decrypt([5,7,1,4], 3))
-
+# print(decrypt([5,7,1,4], 3))
 
 
 # Given an array arr of distinct elements, the task is to rearrange the elements of the array 
@@ -242,7 +241,7 @@ def zigZag(arr: list[int]) -> list[int]:
 
     return arr
 
-print(zigZag([4, 3, 7, 8, 6, 2, 1]))
+# print(zigZag([4, 3, 7, 8, 6, 2, 1]))
 
 
 def secondLargest(arr: list[int]) -> int:
@@ -260,7 +259,7 @@ def secondLargest(arr: list[int]) -> int:
 
     return sl if sl != 0 else -1
 
-print(secondLargest([10, 10, 10]))
+# print(secondLargest([10, 10, 10]))
 
 
 # Indexes of Subarray Sum
@@ -502,3 +501,27 @@ def pairs(arr: list[int], k: int) -> list[int]:
     return li
 
 # print(pairs([3,4,7,11,15,19], 15))
+
+
+# KOKO eating Bananas
+from math import ceil
+def minEatingSpeed(piles, h):
+    l, r = 1, max(piles)
+    res = r
+
+    while l <= r:
+        mid = (l + r) // 2
+
+        speed = 0
+        for pile in piles:
+            speed += ceil(pile / float(mid))
+
+        if speed <= h:
+            res = mid
+            r = mid - 1
+        else:
+            l = mid + 1
+
+    return res
+
+# print(minEatingSpeed([30,11,23,4,20], 5))
