@@ -525,3 +525,23 @@ def minEatingSpeed(piles, h):
     return res
 
 # print(minEatingSpeed([30,11,23,4,20], 5))
+
+# 3487. Maximum Unique Subarray Sum After Deletion
+def maxSum(nums: list[int]) -> int:
+    dic = {}
+    for num in nums:
+        dic[num] = dic.get(num, 0) + 1
+
+    unique = [key for key in dic if key >= 0]
+
+    if unique:
+        return sum(unique)
+    else:
+        uni_el = [key for key in dic if key < 0]
+        return max(uni_el) if uni_el else 0
+    
+# print(maxSum([1,2,-1,-2,1,0,-1]))
+# print(maxSum([1,1,0,1,1]))
+# print(maxSum([1,2,3,4,5]))
+# print(maxSum([-100, -1]))
+# print(maxSum([-100, -1, 0, 0]))
