@@ -162,3 +162,24 @@ def multiplyStrings(s1, s2):
     return sign + (result if result else '0')
 
 # print(multiplyStrings("123", "456"))
+
+
+# 1957. Delete Characters to Make Fancy String
+def makeFancyString(s: str) -> str:
+    n = len(s)
+    string = ''
+    
+    if n <= 2:
+        return s
+    else:
+        string = s[0] + s[1]
+
+        for i in range(2, n):
+            if s[i] == string[-1] and s[i] == string[-2]:
+                continue
+            else:
+                string += s[i]
+
+    return string
+
+# print(makeFancyString("leeetcode"))
