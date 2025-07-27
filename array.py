@@ -545,3 +545,23 @@ def maxSum(nums: list[int]) -> int:
 # print(maxSum([1,2,3,4,5]))
 # print(maxSum([-100, -1]))
 # print(maxSum([-100, -1, 0, 0]))
+
+
+# 2210. Count Hills and Valleys in an Array
+def countHillValley(nums):
+    count = 0
+
+    filtered = [nums[0]]
+    for i in nums[1:]:
+        if i != filtered[-1]:
+            filtered.append(i)
+
+    for i in range(1, len(filtered) - 1):
+        if filtered[i - 1] < filtered[i] and filtered[i + 1] < filtered[i]:
+            count += 1
+        if filtered[i - 1] > filtered[i] and filtered[i + 1] > filtered[i]:
+            count += 1
+    
+    return count
+
+# print(countHillValley([6,6,5,5,4,1]))
