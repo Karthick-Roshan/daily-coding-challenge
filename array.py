@@ -565,3 +565,17 @@ def countHillValley(nums):
     return count
 
 # print(countHillValley([6,6,5,5,4,1]))
+
+def findEquilibrium(arr):
+    total = sum(arr)
+    left = 0
+
+    for i in range(len(arr)):
+        if left == total - arr[i] - left:
+            return i
+        left += arr[i]
+
+    return -1
+
+# print(findEquilibrium([1, 2, 3, 4, 5]))
+# print(findEquilibrium([1, 2, 0, 3]))
