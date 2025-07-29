@@ -579,3 +579,26 @@ def findEquilibrium(arr):
 
 # print(findEquilibrium([1, 2, 3, 4, 5]))
 # print(findEquilibrium([1, 2, 0, 3]))
+
+# Longest subarray with length k
+def longestSubArray(arr, k):
+    n = len(arr)
+    lsa, pref = 0, 0
+    dic = {}
+
+    for i in range(n):
+        pref += arr[i]
+        
+        if pref == k:
+            lsa = i + 1
+        
+        if pref - k in dic:
+            lsa = max(lsa, i - dic[pref - k])
+        
+        if pref not in dic:
+            dic[pref] = i
+
+    return lsa
+
+# arr = [10, 5, 2, 7, 1, -10]
+# print(longestSubArray(arr, 15))
