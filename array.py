@@ -602,3 +602,25 @@ def longestSubArray(arr, k):
 
 # arr = [10, 5, 2, 7, 1, -10]
 # print(longestSubArray(arr, 15))
+
+
+# Largest subarray of 0's and 1's
+def maxLen(arr: list[int]) -> int:
+        n = len(arr)
+        dic = {}
+        pref, res = 0, 0
+        
+        for i in range(n):
+            pref += -1 if arr[i] == 0 else 1
+            
+            if pref == 0:
+                res = i + 1
+                
+            if pref in dic:
+                res = max(res, i - dic[pref])
+            else:
+                dic[pref] = i
+                
+        return res
+
+# print(maxLen([1, 0, 1, 1, 1, 0, 0]))
