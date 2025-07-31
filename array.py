@@ -624,3 +624,32 @@ def maxLen(arr: list[int]) -> int:
         return res
 
 # print(maxLen([1, 0, 1, 1, 1, 0, 0]))
+
+
+# Product array puzzle
+def productExceptSelf(arr):
+    zeros = 0
+    prod = 1
+    idx = -1
+    
+    n = len(arr)
+    
+    for i in range(n):
+        if arr[i] == 0:
+            zeros += 1
+            idx = i
+        else:
+            prod *= arr[i]
+            
+    res = [0] * n
+            
+    if zeros == 0:
+        for i in range(n):
+            res[i] = prod // arr[i]
+            
+    elif zeros == 1:
+        res[idx] = prod
+        
+    return res
+
+# print(productExceptSelf([10, 3, 5, 6, 2]))
