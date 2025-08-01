@@ -653,3 +653,25 @@ def productExceptSelf(arr):
     return res
 
 # print(productExceptSelf([10, 3, 5, 6, 2]))
+
+
+# Count pairs whose sum is less than target
+def countPairs(arr: list[int], target: int) -> int:
+    n = len(arr)
+    arr.sort()
+    
+    count = 0
+    l, r = 0, n - 1
+    
+    while l < r:
+        sums = arr[l] + arr[r]
+        
+        if sums < target:
+            count += r - l
+            l += 1
+        else:
+            r -= 1
+            
+    return count
+
+# print(countPairs([2, 1, 8, 3, 4, 7, 6, 5], 7))
