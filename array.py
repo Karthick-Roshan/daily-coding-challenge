@@ -675,3 +675,25 @@ def countPairs(arr: list[int], target: int) -> int:
     return count
 
 # print(countPairs([2, 1, 8, 3, 4, 7, 6, 5], 7))
+
+
+# https://leetcode.com/problems/fruit-into-baskets/
+def totalFruit(fruits: list[int]) -> int:
+    basket = {}
+    n = len(fruits)
+    l, maxi = 0, 0
+
+    for r in range(n):
+        basket[fruits[r]] = basket.get(fruits[r], 0) + 1
+        
+        while len(basket) > 2:
+            basket[fruits[l]] -= 1
+            if basket[fruits[l]] == 0:
+                del basket[fruits[l]]
+            l += 1
+
+        maxi = max(maxi, r - l + 1)
+
+    return maxi
+
+# print(totalFruit([1,2,3,2,2]))
