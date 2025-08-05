@@ -697,3 +697,22 @@ def totalFruit(fruits: list[int]) -> int:
     return maxi
 
 # print(totalFruit([1,2,3,2,2]))
+
+
+def numOfUnplacedFruits(fruits: list[int], baskets: list[int]) -> int:
+    used = [False] * len(baskets)
+    unplaced = 0
+
+    for fruit in fruits:
+        placed = False
+        for i in range(len(baskets)):
+            if not used[i] and baskets[i] >= fruit:
+                used[i] = True
+                placed = True
+                break
+        if not placed:
+            unplaced += 1
+
+    return unplaced
+
+print(numOfUnplacedFruits(fruits = [4,2,5], baskets = [3,5,4]))
