@@ -744,3 +744,8 @@ def summaryRanges(nums: list[int]) -> list[str]:
 
 # print(summaryRanges([0,1,2,4,5,7]))
     
+# Power of Two
+def isPowerOfTwo(n: int) -> bool:
+    return n > 0 and (n & (n - 1)) == 0
+
+print(isPowerOfTwo(4))
