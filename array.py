@@ -748,4 +748,26 @@ def summaryRanges(nums: list[int]) -> list[str]:
 def isPowerOfTwo(n: int) -> bool:
     return n > 0 and (n & (n - 1)) == 0
 
-print(isPowerOfTwo(4))
+# print(isPowerOfTwo(4))
+
+# 808. Soup Servings
+from functools import lru_cache
+
+def soupServings(n: int) -> float:
+    units = (n + 24) // 25  
+    if units >= 200:
+        return 1.0
+
+    @lru_cache(None)
+    def P(a: int, b: int) -> float:
+        if a <= 0 and b <= 0:
+            return 0.5
+        if a <= 0:
+            return 1.0
+        if b <= 0:
+            return 0.0
+        return 0.25 * (P(a-4, b) + P(a-3, b-1) + P(a-2, b-2) + P(a-1, b-3))
+
+    return P(units, units)
+
+print(soupServings(50))
