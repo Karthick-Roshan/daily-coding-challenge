@@ -770,4 +770,12 @@ def soupServings(n: int) -> float:
 
     return P(units, units)
 
-print(soupServings(50))
+# print(soupServings(50))
+
+# 575. Distribute Candies
+def distributeCandies(candyType: list[int]) -> int:
+    unique_types = len(set(candyType))
+    max_allowed = len(candyType) // 2
+    return min(unique_types, max_allowed)
+
+print(distributeCandies([1,1,2,2,3,3]))
