@@ -778,4 +778,36 @@ def distributeCandies(candyType: list[int]) -> int:
     max_allowed = len(candyType) // 2
     return min(unique_types, max_allowed)
 
-print(distributeCandies([1,1,2,2,3,3]))
+# print(distributeCandies([1,1,2,2,3,3]))
+
+def convert(s: str, numRows: int) -> str:
+    if numRows == 1 or numRows >= len(s):
+        return s
+    
+    n = len(s)
+    li = [[''] * n for _ in range(numRows)]
+    
+    k, l = 0, 0
+    val = 0
+
+    while val < n:
+        while k < numRows and val < n:
+            li[k][l] = s[val]
+            k += 1
+            val += 1
+
+        k -= 2
+        l += 1
+
+        while k >= 0 and val < n:
+            li[k][l] = s[val]
+            k -= 1
+            l += 1
+            val += 1
+
+        k += 2
+
+    result = ''.join([''.join(row) for row in li])
+    return result.replace('', '')  
+
+# print(convert('PAYPALISHIRING', 3))
