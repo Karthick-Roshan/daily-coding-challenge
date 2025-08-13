@@ -811,3 +811,24 @@ def convert(s: str, numRows: int) -> str:
     return result.replace('', '')  
 
 # print(convert('PAYPALISHIRING', 3))
+
+# 39. Combination Sum
+def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
+    result = []
+
+    def dfs(start, path, total):
+        if total == target:
+            result.append(path[:])
+            return
+        if total > target:
+            return
+
+        for i in range(start, len(candidates)):
+            path.append(candidates[i])
+            dfs(i, path, total + candidates[i])
+            path.pop()
+
+    dfs(0, [], 0)
+    return result
+
+# print(combinationSum([2,3,6,7], 7))
