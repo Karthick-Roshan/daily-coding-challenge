@@ -192,4 +192,18 @@ def isSubsequence(s: str, t: str) -> bool:
                 i += 1
         return i == len(s)
 
-print(isSubsequence("abc", "ahbgdc"))
+# print(isSubsequence("abc", "ahbgdc"))
+
+# 2264. Largest 3-Same-Digit Number in String
+def largestGoodInteger(num: str) -> str:
+    max_good = ""
+
+    for i in range(len(num) - 2):
+        if num[i] == num[i+1] == num[i+2]:  
+            sub = num[i:i+3]
+            if sub > max_good:
+                max_good = sub
+                
+    return max_good
+
+print(largestGoodInteger('6777133339'))
