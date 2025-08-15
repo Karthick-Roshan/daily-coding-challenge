@@ -832,3 +832,8 @@ def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
     return result
 
 # print(combinationSum([2,3,6,7], 7))
+
+def isPowerOfFour(n: int) -> bool:
+    return n > 0 and (n & (n - 1)) == 0 and (n & 0x55555555) != 0
+
+# print(isPowerOfFour(16))
