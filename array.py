@@ -837,3 +837,8 @@ def isPowerOfFour(n: int) -> bool:
     return n > 0 and (n & (n - 1)) == 0 and (n & 0x55555555) != 0
 
 # print(isPowerOfFour(16))
+
+def maximum69Number (num: int) -> int:
+    return int(str(num).replace('6', '9', 1))
+
+# print(maximum69Number(9669))
