@@ -891,3 +891,17 @@ def findRelativeRanks(score: list[int]) -> list[str]:
     return result
 
 # print(findRelativeRanks([10,3,8,9,4]))
+
+# Pivot Index
+def pivotIndex(nums: list[int]) -> int:
+    totalSum = sum(nums)
+    leftSum = 0
+
+    for i, num in enumerate(nums):
+        if leftSum == totalSum - leftSum - num:
+            return i
+        leftSum += num
+
+    return -1
+
+print(pivotIndex([1,7,3,6,5,6]))
