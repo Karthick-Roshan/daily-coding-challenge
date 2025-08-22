@@ -904,4 +904,25 @@ def pivotIndex(nums: list[int]) -> int:
 
     return -1
 
-print(pivotIndex([1,7,3,6,5,6]))
+# print(pivotIndex([1,7,3,6,5,6]))
+
+
+# 3195. Find the Minimum Area to Cover All Ones I
+def minimumArea(grid: list[list[int]]) -> int:
+    minr, maxr = float('inf'), -1
+    minc, maxc = float('inf'), -1
+
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 1:
+                minr = min(minr, i)
+                maxr = max(maxr, i)
+                minc = min(minc, j)
+                maxc = max(maxc, j)
+
+    height = maxr - minr + 1
+    width = maxc - minc + 1
+
+    return height * width
+
+# print(minimumArea([[0,1,0],[1,0,1]]))
