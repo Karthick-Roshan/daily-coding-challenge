@@ -207,3 +207,26 @@ def largestGoodInteger(num: str) -> str:
     return max_good
 
 # print(largestGoodInteger('6777133339'))
+
+
+def wordPattern(pattern: str, s: str) -> bool:
+    dic = {}
+    s = s.split(" ")
+    used = set()
+
+    if len(pattern) != len(s):
+        return False
+    
+    for i in range(len(pattern)):
+        if pattern[i] not in dic:
+            if s[i] in used:
+                return False
+            dic[pattern[i]] = s[i]
+            used.add(s[i]) 
+        else:
+            if dic.get(pattern[i]) != s[i]:
+                return False
+ 
+    return True
+
+# print(wordPattern(pattern = "abba", s = "dog dog dog dog"))
