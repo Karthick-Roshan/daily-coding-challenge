@@ -926,3 +926,17 @@ def minimumArea(grid: list[list[int]]) -> int:
     return height * width
 
 # print(minimumArea([[0,1,0],[1,0,1]]))
+
+def nextGreatestLetter(letters: list[str], target: str) -> str:
+    left, right = 0, len(letters) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if letters[mid] <= target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return letters[left % len(letters)]
+
+print(nextGreatestLetter(letters = ["c","f","j"], target = "a"))
