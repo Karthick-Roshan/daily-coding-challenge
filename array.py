@@ -939,4 +939,27 @@ def nextGreatestLetter(letters: list[str], target: str) -> str:
     
     return letters[left % len(letters)]
 
-print(nextGreatestLetter(letters = ["c","f","j"], target = "a"))
+# print(nextGreatestLetter(letters = ["c","f","j"], target = "a"))
+
+
+# Find K largest elements in an array
+
+import heapq
+def kLargestElements(arr, k):
+
+    minH = arr[:k]
+    heapq.heapify(minH)
+
+    for x in arr[k:]:
+        if x > minH[0]:
+            heapq.heapreplace(minH, x)
+
+    res = []
+
+    while minH:
+        res.append(heapq.heappop(minH))
+
+    res.reverse()
+    return res
+
+# print(kLargestElements([1, 23, 12, 9, 30, 2, 50], 3))
