@@ -981,4 +981,15 @@ def getMinDiff(arr: list[int], k: int) -> int:
         
     return res
 
-print(getMinDiff([1, 5, 8, 10], 2))
+# print(getMinDiff([1, 5, 8, 10], 2))
+
+# 771. Jewels and Stones
+def numJewelsInStones(jewels: str, stones: str) -> int:
+    count = 0
+    for stone in stones:
+        if stone in jewels:
+            count += 1
+
+    return count
+
+print(numJewelsInStones(jewels = "aA", stones = "aAAbbbb"))
