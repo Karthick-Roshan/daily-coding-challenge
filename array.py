@@ -992,4 +992,10 @@ def numJewelsInStones(jewels: str, stones: str) -> int:
 
     return count
 
-print(numJewelsInStones(jewels = "aA", stones = "aAAbbbb"))
+# print(numJewelsInStones(jewels = "aA", stones = "aAAbbbb"))
+
+import math
+def flowerGame(n: int, m: int) -> int:
+    return math.floor((n * m)/2)
+
+print(flowerGame(5, 5))
