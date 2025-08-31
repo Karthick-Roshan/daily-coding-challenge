@@ -230,3 +230,39 @@ def wordPattern(pattern: str, s: str) -> bool:
     return True
 
 # print(wordPattern(pattern = "abba", s = "dog dog dog dog"))
+
+
+def countAndSay(n: int) -> str:
+    if n == 1:
+        return '1'
+
+    def stol(string: str) -> list[list]:
+        li = []
+        length = len(string)
+        idx = 0
+
+        while idx < length:
+            count, number = 0, string[idx]
+            while idx < length and string[idx] == number:
+                    count += 1
+                    idx += 1
+            li.append([count, number])
+
+        return li
+
+    def ltos(dl: list) -> str:
+        string = ""
+        for l in dl:
+            string += str(l[0]) + l[1]
+        return string
+
+    res = ltos(stol('1'))
+    if n == 2:
+        return res
+
+    for _ in range(2, n):
+        res = ltos(stol(res))
+
+    return res
+
+# print(countAndSay(10))

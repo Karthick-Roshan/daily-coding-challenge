@@ -1,2 +1,2 @@
-or i in range(3):
-        pr
+  if idx == length:
+            break

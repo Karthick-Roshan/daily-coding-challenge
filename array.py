@@ -998,4 +998,4 @@ import math
 def flowerGame(n: int, m: int) -> int:
     return math.floor((n * m)/2)
 
-print(flowerGame(5, 5))
+# print(flowerGame(5, 5))
