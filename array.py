@@ -999,3 +999,14 @@ def flowerGame(n: int, m: int) -> int:
     return math.floor((n * m)/2)
 
 # print(flowerGame(5, 5))
+
+def shuffle(nums: list[int], n: int) -> list[int]:
+    res = []
+
+    for i in range(n):
+        res.append(nums[i])
+        res.append(nums[n+i])
+
+    return res
+
+# print(shuffle(nums = [1,2,3,4,4,3,2,1], n = 4))
