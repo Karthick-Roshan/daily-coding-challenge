@@ -1010,3 +1010,26 @@ def shuffle(nums: list[int], n: int) -> list[int]:
     return res
 
 # print(shuffle(nums = [1,2,3,4,4,3,2,1], n = 4))
+
+# Celebrity Problem
+def celebrity(mat: list[list[int]]) -> int:
+    n = len(mat)
+    
+    i, j = 0, n - 1
+    
+    while i < j:
+        if mat[i][j] == 1:
+            i += 1
+        else:
+            j -= 1
+    
+    cand = i
+            
+    for k in range(n):
+        if k != cand:
+            if mat[cand][k] == 1 or mat[k][cand] == 0:
+                return -1
+            
+    return cand
+
+# print(celebrity([[1, 1, 0],[0, 1, 0],[0, 1, 1]]))
