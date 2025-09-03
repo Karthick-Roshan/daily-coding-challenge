@@ -1033,3 +1033,23 @@ def celebrity(mat: list[list[int]]) -> int:
     return cand
 
 # print(celebrity([[1, 1, 0],[0, 1, 0],[0, 1, 1]]))
+
+def addDigits(num: int) -> int:
+    if num < 10:
+        return num
+
+    def digi(n: int) -> int:
+        if n < 10: 
+            return n
+        else:
+            sumx = 0
+            while n != 0:
+                temp = n % 10
+                sumx += temp
+                n = n // 10
+
+            return digi(sumx)
+
+    return digi(num)
+
+# print(addDigits(38))
