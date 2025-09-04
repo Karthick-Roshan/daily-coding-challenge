@@ -1053,3 +1053,14 @@ def addDigits(num: int) -> int:
     return digi(num)
 
 # print(addDigits(38))
+
+def findClosest(x: int, y: int, z: int) -> int:
+    one = abs(z - x)
+    two = abs(z - y)
+    
+    if one == two:
+        return 0
+
+    return 1 if one < two else 2
+
+# print(findClosest(x = 2, y = 7, z = 4))
