@@ -1064,3 +1064,8 @@ def findClosest(x: int, y: int, z: int) -> int:
     return 1 if one < two else 2
 
 # print(findClosest(x = 2, y = 7, z = 4))
+
+def addBinary(a: str, b: str) -> str:
+    return bin(int(a, 2) + int(b, 2))[2:]
+
+# print(addBinary(a = "11", b = "1"))
