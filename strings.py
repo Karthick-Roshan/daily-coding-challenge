@@ -266,3 +266,14 @@ def countAndSay(n: int) -> str:
     return res
 
 # print(countAndSay(10))
+
+
+# Excel Column
+def titleToNumber(columnTitle: str) -> int:
+    result = 0
+    for char in columnTitle:
+        value = ord(char) - ord('A') + 1  
+        result = result * 26 + value      
+    return result
+
+# print(titleToNumber('ADCS'))
