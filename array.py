@@ -1079,4 +1079,17 @@ def getNoZeroIntegers(n: int) -> list[int]:
         if noZero(i) and noZero(b):
             return [i, b]
 
-print(getNoZeroIntegers(11))
+# print(getNoZeroIntegers(11))
+
+def firstUniqChar(s: str) -> int:
+    freq = [0] * 26  
+    for ch in s:
+        freq[ord(ch) - ord('a')] += 1
+
+    for i, ch in enumerate(s):
+        if freq[ord(ch) - ord('a')] == 1:
+            return i
+
+    return -1
+
+print(firstUniqChar(s = "loveleetcode"))
