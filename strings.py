@@ -302,4 +302,25 @@ def isIsomorphic(s: str, t: str) -> bool:
 
     return True
 
-print(isIsomorphic(s = "paper", t = "title"))
+# print(isIsomorphic(s = "paper", t = "title"))
+
+# Sort Vowels
+def sortVowels(s: str) -> str:
+    vowels = set("aeiouAEIOU")
+    
+    extracted = [ch for ch in s if ch in vowels]
+    
+    extracted.sort()
+    
+    result = []
+    j = 0
+    for ch in s:
+        if ch in vowels:
+            result.append(extracted[j])
+            j += 1
+        else:
+            result.append(ch)
+    
+    return "".join(result)
+
+# print(sortVowels(s = "lEetcOde"))
